@@ -1,4 +1,4 @@
-package ru.petrushin.ya.musicapp;
+package ru.petrushin.ya.data;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
