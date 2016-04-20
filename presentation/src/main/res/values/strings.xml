@@ -1,5 +1,23 @@
 <resources>
   <string name="app_name">Music App</string>
+
+  <plurals name="n_albums">
+    <item quantity="one">%1$s альбом</item>
+    <item quantity="few">%1$s альбома</item>
+    <item quantity="many">%1$s альбомов</item>
+    <item quantity="other">%1$s альбомов</item>
+  </plurals>
+
+  <plurals name="n_tracks">
+    <item quantity="one">%1$s песня</item>
+    <item quantity="few">%1$s песни</item>
+    <item quantity="many">%1$s песен</item>
+    <item quantity="other">%1$s песен</item>
+  </plurals>
+
   <string name="artist_detail_biography">Биография</string>
+  <string name="artist_row_works">%1$s, %2$s</string>
+  <string name="artist_detail_works">%1$s \u0020\u2022\u0020 %2$s</string>
+
   <string name="base.retry">Повторить</string>
 </resources>

@@ -22,7 +22,7 @@
       />
 
   <TextView
-      android:id="@+id/worksCount"
+      android:id="@+id/works"
       android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
