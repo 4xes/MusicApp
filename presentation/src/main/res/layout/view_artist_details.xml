@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/appbar"
+    >
+  <ImageView
+      android:id="@+id/avatar"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/avatar_big_height"
+      />
+
+  <TextView
+      android:id="@+id/genres"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/activity_vertical_margin"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
+      />
+
+  <TextView
+      android:id="@+id/worksCount"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/activity_vertical_margin"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
+      />
+
+  <TextView
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/activity_vertical_margin"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
+      android:text="@string/artist_detail_biography"
+      />
+  <TextView
+      android:id="@+id/description"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/activity_vertical_margin"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
+      />
+
+</LinearLayout>

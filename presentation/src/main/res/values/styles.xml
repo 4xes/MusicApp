@@ -1,12 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <!-- Base application theme. -->
-  <style name="AppTheme"
-      parent="Theme.AppCompat.Light.DarkActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
+  <style name="FadingText">
+    <item name="android:fadingEdgeLength">@dimen/default_padding</item>
+    <item name="android:singleLine">true</item>
+    <item name="android:ellipsize">none</item>
+    <item name="android:requiresFadingEdge">horizontal</item>
   </style>
 
+  <style name="Selectable">
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:foreground">?android:attr/selectableItemBackground</item>
+  </style>
+
+  <style name="Artist"/>
+
+  <style name="Artist.Name"
+      parent="FadingText">
+    <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
+  </style>
+
+  <style name="Artist.Genres"
+      parent="FadingText">
+    <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Small</item>
+  </style>
+
+  <style name="Artist.Works">
+    <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Small</item>
+  </style>
+
+  <style name="Artist.Row"
+      parent="Selectable"/>
 </resources>
