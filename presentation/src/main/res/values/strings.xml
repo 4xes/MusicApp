@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Music App</string>
   <string name="artist_detail_biography">Биография</string>
+  <string name="base.retry">Повторить</string>
 </resources>
