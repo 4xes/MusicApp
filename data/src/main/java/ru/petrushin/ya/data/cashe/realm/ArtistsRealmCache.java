@@ -3,6 +3,7 @@ package ru.petrushin.ya.data.cashe.realm;
 import android.content.Context;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import ru.petrushin.ya.data.cashe.ArtistsCache;
 import ru.petrushin.ya.data.cashe.realm.model.ArtistRealm;
 import ru.petrushin.ya.data.cashe.realm.model.CoverRealm;
 import ru.petrushin.ya.data.cashe.realm.model.ExpiredRealm;
+import ru.petrushin.ya.data.cashe.realm.model.RealmString;
 import ru.petrushin.ya.music.domain.Artist;
 import ru.petrushin.ya.music.domain.Cover;
 import rx.Observable;
@@ -75,6 +77,16 @@ import rx.Observable;
     artistRealm.setLink(artist.getLink());
     artistRealm.setAlbums(artist.getAlbums());
     artistRealm.setTracks(artist.getTracks());
+
+    if (artist.getGenres() != null && artist.getGenres().size() > 0) {
+      RealmList<RealmString> genresRealm = new RealmList<>();
+      for (String genre : artist.getGenres()) {
+        RealmString genreRealm = realm.createObject(RealmString.class);
+        genresRealm.add(genreRealm);
+      }
+      artistRealm.setGenres(genresRealm);
+    }
+
     if (artist.getCover() != null) {
       CoverRealm coverRealm = realm.createObject(CoverRealm.class);
       coverRealm.setSmall(artist.getCover().getSmall());
@@ -87,8 +99,17 @@ import rx.Observable;
   private Artist mapToObject(ArtistRealm artistRealm) {
     Artist artist = new Artist(artistRealm.getId());
     artist.setName(artistRealm.getName());
-
     artist.setDescription(artistRealm.getDescription());
+    RealmList<RealmString> genresRealm = artistRealm.getGenres();
+
+    if (genresRealm != null && genresRealm.size() > 0) {
+      List<String> genres = new ArrayList<>();
+      for (RealmString genreRealm : genresRealm) {
+        genres.add(genreRealm.getValue());
+      }
+      artist.setGenres(genres);
+    }
+
     artist.setLink(artistRealm.getLink());
     artist.setAlbums(artistRealm.getAlbums());
     artist.setTracks(artistRealm.getTracks());

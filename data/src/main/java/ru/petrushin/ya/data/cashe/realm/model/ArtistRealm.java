@@ -1,5 +1,6 @@
 package ru.petrushin.ya.data.cashe.realm.model;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -7,7 +8,7 @@ public class ArtistRealm extends RealmObject {
 
   @PrimaryKey private long id;
   private String name;
-  private String[] genres;
+  private RealmList<RealmString> genres;
   private int tracks;
   private int albums;
   private String link;
@@ -30,11 +31,11 @@ public class ArtistRealm extends RealmObject {
     this.name = name;
   }
 
-  public String[] getGenres() {
+  public RealmList<RealmString> getGenres() {
     return genres;
   }
 
-  public void setGenres(String[] genres) {
+  public void setGenres(RealmList<RealmString> genres) {
     this.genres = genres;
   }
 
