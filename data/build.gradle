@@ -1,25 +1,65 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.fernandocejas.frodo'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  defaultPublishConfig "debug"
+
+  def globalConfiguration = rootProject.extensions.getByName("ext")
+
+  compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+  buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
 
   defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 23
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+    targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+    versionCode globalConfiguration.getAt("androidVersionCode")
   }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
+
+  buildTypes.each {
+    it.buildConfigField 'String', 'YANDEX_MOBILIZATION_URL', YandexMobilizationUrl
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  packagingOptions {
+    exclude 'LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/ASL2.0'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+  }
+
+  lintOptions {
+    quiet true
+    abortOnError false
+    ignoreWarnings true
+    disable 'InvalidPackage' // Some libraries have issues with this
+    disable 'OldTargetApi' // Due to Robolectric that modifies the manifest when running tests
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:23.3.0'
+  def dataDependencies = rootProject.ext.dataDependencies
+  def testDependencies = rootProject.ext.dataTestDependencies
+
+  compile project(':domain')
+  apt dataDependencies.daggerCompiler
+  provided dataDependencies.javaxAnnotation
+  compile dataDependencies.dagger
+  compile dataDependencies.retrofit
+  compile dataDependencies.retrofitGson
+  compile dataDependencies.rxJava
+  compile dataDependencies.rxAndroid
+  compile dataDependencies.androidAnnotations
+
+  testCompile testDependencies.junit
+  testCompile testDependencies.assertj
+  testCompile testDependencies.mockito
+  testCompile testDependencies.robolectric
 }
