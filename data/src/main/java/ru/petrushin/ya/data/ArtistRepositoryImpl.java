@@ -1,6 +1,7 @@
 package ru.petrushin.ya.data;
 
 import java.util.List;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import ru.petrushin.ya.data.cashe.ArtistsCache;
 import ru.petrushin.ya.data.net.RestClient;
@@ -12,6 +13,7 @@ import rx.Observable;
   private ArtistsCache artistsCache;
   private RestClient restClient;
 
+  @Inject
   public ArtistRepositoryImpl(ArtistsCache artistsCache, RestClient restClient) {
     this.artistsCache = artistsCache;
     this.restClient = restClient;

@@ -9,5 +9,4 @@ public interface ArtistRepository {
   Observable<List<Artist>> artists();
 
   Observable<Artist> artist(final long artistId);
-
 }
