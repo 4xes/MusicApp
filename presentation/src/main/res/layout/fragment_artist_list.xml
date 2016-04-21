@@ -6,7 +6,10 @@
     tools:showIn="@layout/content_main"
     >
 
-  <include layout="@layout/view_toolbar"/>
+  <include
+      android:id="@+id/appbar"
+      layout="@layout/view_toolbar"
+      />
 
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recyclerView"
@@ -15,8 +18,18 @@
       android:layout_height="match_parent"
       />
 
-  <include layout="@layout/view_progress"/>
+  <include
+      android:layout_below="@id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      layout="@layout/view_progress"
+      />
 
-  <include layout="@layout/view_retry"/>
+  <include
+      android:layout_below="@id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      layout="@layout/view_retry"
+      />
 
 </RelativeLayout>

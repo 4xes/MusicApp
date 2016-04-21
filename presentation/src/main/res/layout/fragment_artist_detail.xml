@@ -6,7 +6,15 @@
     tools:showIn="@layout/content_main"
     >
 
-  <include layout="@layout/view_toolbar"/>
-  <include layout="@layout/view_artist_details"/>
+  <include
+      android:id="@+id/appbar"
+      layout="@layout/view_toolbar"
+      />
+  <include
+      layout="@layout/view_artist_details"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/appbar"
+      />
 
 </RelativeLayout>
