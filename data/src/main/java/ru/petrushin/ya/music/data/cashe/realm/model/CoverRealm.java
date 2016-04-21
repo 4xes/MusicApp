@@ -1,4 +1,4 @@
-package ru.petrushin.ya.data.cashe.realm.model;
+package ru.petrushin.ya.music.data.cashe.realm.model;
 
 import io.realm.RealmObject;
 

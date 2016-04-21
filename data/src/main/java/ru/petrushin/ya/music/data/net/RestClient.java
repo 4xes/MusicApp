@@ -1,4 +1,4 @@
-package ru.petrushin.ya.data.net;
+package ru.petrushin.ya.music.data.net;
 
 import java.util.List;
 import ru.petrushin.ya.music.domain.Artist;

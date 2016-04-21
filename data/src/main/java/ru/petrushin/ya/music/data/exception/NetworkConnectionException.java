@@ -13,30 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ru.petrushin.ya.data.exception;
-
-import ru.petrushin.ya.music.domain.exception.ErrorBundle;
+package ru.petrushin.ya.music.data.exception;
 
 /**
- * Wrapper around Exceptions used to manage errors in the repository.
+ * Exception throw by the application when a there is a network connection exception.
  */
-public class RepositoryErrorBundle implements ErrorBundle {
+public class NetworkConnectionException extends Exception {
 
-  private final Exception exception;
-
-  public RepositoryErrorBundle(Exception exception) {
-    this.exception = exception;
+  public NetworkConnectionException() {
+    super();
   }
 
-  @Override public Exception getException() {
-    return exception;
+  public NetworkConnectionException(final String message) {
+    super(message);
   }
 
-  @Override public String getErrorMessage() {
-    String message = "";
-    if (this.exception != null) {
-      this.exception.getMessage();
-    }
-    return message;
+  public NetworkConnectionException(final String message, final Throwable cause) {
+    super(message, cause);
+  }
+
+  public NetworkConnectionException(final Throwable cause) {
+    super(cause);
   }
 }

@@ -1,4 +1,4 @@
-package ru.petrushin.ya.data.net;
+package ru.petrushin.ya.music.data.net;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;

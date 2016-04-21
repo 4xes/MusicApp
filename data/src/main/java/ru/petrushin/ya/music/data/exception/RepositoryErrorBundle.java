@@ -13,26 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ru.petrushin.ya.data.exception;
+package ru.petrushin.ya.music.data.exception;
+
+import ru.petrushin.ya.music.domain.exception.ErrorBundle;
 
 /**
- * Exception throw by the application when a Artist search can't return a valid result.
+ * Wrapper around Exceptions used to manage errors in the repository.
  */
-public class ArtistNotFoundException extends Exception {
+public class RepositoryErrorBundle implements ErrorBundle {
 
-  public ArtistNotFoundException() {
-    super();
+  private final Exception exception;
+
+  public RepositoryErrorBundle(Exception exception) {
+    this.exception = exception;
   }
 
-  public ArtistNotFoundException(final String message) {
-    super(message);
+  @Override public Exception getException() {
+    return exception;
   }
 
-  public ArtistNotFoundException(final String message, final Throwable cause) {
-    super(message, cause);
-  }
-
-  public ArtistNotFoundException(final Throwable cause) {
-    super(cause);
+  @Override public String getErrorMessage() {
+    String message = "";
+    if (this.exception != null) {
+      this.exception.getMessage();
+    }
+    return message;
   }
 }

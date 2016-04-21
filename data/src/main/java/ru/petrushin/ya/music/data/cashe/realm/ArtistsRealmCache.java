@@ -1,4 +1,4 @@
-package ru.petrushin.ya.data.cashe.realm;
+package ru.petrushin.ya.music.data.cashe.realm;
 
 import android.content.Context;
 import io.realm.Realm;
@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import ru.petrushin.ya.data.cashe.ArtistsCache;
-import ru.petrushin.ya.data.cashe.realm.model.ArtistRealm;
-import ru.petrushin.ya.data.cashe.realm.model.CoverRealm;
-import ru.petrushin.ya.data.cashe.realm.model.ExpiredRealm;
-import ru.petrushin.ya.data.cashe.realm.model.RealmString;
+import ru.petrushin.ya.music.data.cashe.ArtistsCache;
+import ru.petrushin.ya.music.data.cashe.realm.model.ArtistRealm;
+import ru.petrushin.ya.music.data.cashe.realm.model.CoverRealm;
+import ru.petrushin.ya.music.data.cashe.realm.model.ExpiredRealm;
+import ru.petrushin.ya.music.data.cashe.realm.model.RealmString;
 import ru.petrushin.ya.music.domain.Artist;
 import ru.petrushin.ya.music.domain.Cover;
 import rx.Observable;

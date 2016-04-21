@@ -1,10 +1,10 @@
-package ru.petrushin.ya.data;
+package ru.petrushin.ya.music.data;
 
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import ru.petrushin.ya.data.cashe.ArtistsCache;
-import ru.petrushin.ya.data.net.RestClient;
+import ru.petrushin.ya.music.data.cashe.ArtistsCache;
+import ru.petrushin.ya.music.data.net.RestClient;
 import ru.petrushin.ya.music.domain.Artist;
 import ru.petrushin.ya.music.domain.repository.ArtistRepository;
 import rx.Observable;

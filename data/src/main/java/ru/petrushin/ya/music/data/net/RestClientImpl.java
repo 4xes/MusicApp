@@ -1,10 +1,10 @@
-package ru.petrushin.ya.data.net;
+package ru.petrushin.ya.music.data.net;
 
 import com.fernandocejas.frodo.annotation.RxLogObservable;
 import java.io.IOException;
 import java.util.List;
 import retrofit2.Response;
-import ru.petrushin.ya.data.exception.NetworkConnectionException;
+import ru.petrushin.ya.music.data.exception.NetworkConnectionException;
 import ru.petrushin.ya.music.domain.Artist;
 import rx.Observable;
 import rx.Subscriber;

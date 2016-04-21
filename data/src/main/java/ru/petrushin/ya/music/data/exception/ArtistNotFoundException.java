@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ru.petrushin.ya.data.exception;
+package ru.petrushin.ya.music.data.exception;
 
 /**
- * Exception throw by the application when a there is a network connection exception.
+ * Exception throw by the application when a Artist search can't return a valid result.
  */
-public class NetworkConnectionException extends Exception {
+public class ArtistNotFoundException extends Exception {
 
-  public NetworkConnectionException() {
+  public ArtistNotFoundException() {
     super();
   }
 
-  public NetworkConnectionException(final String message) {
+  public ArtistNotFoundException(final String message) {
     super(message);
   }
 
-  public NetworkConnectionException(final String message, final Throwable cause) {
+  public ArtistNotFoundException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
-  public NetworkConnectionException(final Throwable cause) {
+  public ArtistNotFoundException(final Throwable cause) {
     super(cause);
   }
 }

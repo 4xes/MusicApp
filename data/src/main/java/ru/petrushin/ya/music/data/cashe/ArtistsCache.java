@@ -1,4 +1,4 @@
-package ru.petrushin.ya.data.cashe;
+package ru.petrushin.ya.music.data.cashe;
 
 import java.util.List;
 import ru.petrushin.ya.music.domain.Artist;
