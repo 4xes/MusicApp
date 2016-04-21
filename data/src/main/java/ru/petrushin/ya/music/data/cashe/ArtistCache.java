@@ -4,7 +4,7 @@ import java.util.List;
 import ru.petrushin.ya.music.domain.Artist;
 import rx.Observable;
 
-public interface ArtistsCache {
+public interface ArtistCache {
   Observable<Artist> getArtist(final long artistId);
 
   Observable<List<Artist>> getAllArtists();
@@ -18,7 +18,7 @@ public interface ArtistsCache {
    */
   void putArtist(Artist artistEntity);
 
-  boolean isCashed(final int artistId);
+  boolean isCashed(final long artistId);
 
   boolean isExpired();
 

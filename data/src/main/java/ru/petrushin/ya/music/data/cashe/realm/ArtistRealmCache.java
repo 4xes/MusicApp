@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import ru.petrushin.ya.music.data.cashe.ArtistsCache;
+import ru.petrushin.ya.music.data.cashe.ArtistCache;
 import ru.petrushin.ya.music.data.cashe.realm.model.ArtistRealm;
 import ru.petrushin.ya.music.data.cashe.realm.model.CoverRealm;
 import ru.petrushin.ya.music.data.cashe.realm.model.ExpiredRealm;
@@ -18,14 +18,14 @@ import ru.petrushin.ya.music.domain.Artist;
 import ru.petrushin.ya.music.domain.Cover;
 import rx.Observable;
 
-@Singleton public class ArtistsRealmCache implements ArtistsCache {
+@Singleton public class ArtistRealmCache implements ArtistCache {
 
   private static final long EXPIRATION_TIME = 60 * 10 * 1000;
   private static final String ARTISTS_NAME = "artists.realm";
   private static final String EXPIRED_KEY = "artist_expired";
   private final Realm realm;
 
-  @Inject public ArtistsRealmCache(Context context) {
+  @Inject public ArtistRealmCache(Context context) {
     initConfig(context);
     realm = Realm.getDefaultInstance();
   }
@@ -123,7 +123,7 @@ import rx.Observable;
     return artist;
   }
 
-  @Override public boolean isCashed(int artistId) {
+  @Override public boolean isCashed(long artistId) {
     ArtistRealm artistRealm = realm.where(ArtistRealm.class).equalTo("id", artistId).findFirst();
     return artistRealm != null;
   }
