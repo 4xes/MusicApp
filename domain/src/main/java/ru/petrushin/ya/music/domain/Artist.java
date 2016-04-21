@@ -1,45 +1,22 @@
 package ru.petrushin.ya.music.domain;
 
-import java.util.List;
-
 public class Artist {
-  private final long artistId;
+  private final long id;
 
-  public Artist(long artistId) {
-    this.artistId = artistId;
+  public Artist(long id) {
+    this.id = id;
   }
 
   private String name;
-  private List<String> genres;
+  private String[] genres;
   private int tracks;
   private int albums;
   private String link;
   private String description;
   private Cover cover;
 
-  public class Cover {
-    private String small;
-    private String big;
-
-    public String getSmall() {
-      return small;
-    }
-
-    public void setSmall(String small) {
-      this.small = small;
-    }
-
-    public String getBig() {
-      return big;
-    }
-
-    public void setBig(String big) {
-      this.big = big;
-    }
-  }
-
   public long getArtistId() {
-    return artistId;
+    return id;
   }
 
   public String getName() {
@@ -50,11 +27,11 @@ public class Artist {
     this.name = name;
   }
 
-  public List<String> getGenres() {
+  public String[] getGenres() {
     return genres;
   }
 
-  public void setGenres(List<String> genres) {
+  public void setGenres(String[] genres) {
     this.genres = genres;
   }
 

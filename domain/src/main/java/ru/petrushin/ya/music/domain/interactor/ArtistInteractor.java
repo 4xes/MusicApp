@@ -7,13 +7,13 @@ import ru.petrushin.ya.music.domain.repository.ArtistRepository;
 import rx.Observable;
 import rx.Scheduler;
 
-public class GetArtistDetail extends Interactor<Artist, Void>{
+public class ArtistInteractor extends Interactor<Artist, Void>{
 
   private final long artistId;
   private final ArtistRepository artistRepository;
 
   @Inject
-  public GetArtistDetail(long artistId, ArtistRepository artistRepository, Scheduler jobScheduler, Scheduler uiScheduler) {
+  public ArtistInteractor(long artistId, ArtistRepository artistRepository, Scheduler jobScheduler, Scheduler uiScheduler) {
     super(jobScheduler, uiScheduler);
     this.artistId = artistId;
     this.artistRepository = artistRepository;

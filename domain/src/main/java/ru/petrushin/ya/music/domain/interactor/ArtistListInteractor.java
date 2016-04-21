@@ -8,12 +8,12 @@ import ru.petrushin.ya.music.domain.repository.ArtistRepository;
 import rx.Observable;
 import rx.Scheduler;
 
-public class GetArtistList extends Interactor<List<Artist>, Void> {
+public class ArtistListInteractor extends Interactor<List<Artist>, Void> {
 
   private final ArtistRepository artistRepository;
 
   @Inject
-  public GetArtistList(ArtistRepository artistRepository, @Named("JOB") Scheduler jobScheduler, @Named("UI") Scheduler uiScheduler) {
+  public ArtistListInteractor(ArtistRepository artistRepository, @Named("JOB") Scheduler jobScheduler, @Named("UI") Scheduler uiScheduler) {
     super(jobScheduler, uiScheduler);
     this.artistRepository = artistRepository;
   }

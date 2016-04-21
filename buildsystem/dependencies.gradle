@@ -14,6 +14,8 @@ ext {
   //Libraries
   supportAndroid = '23.3.0'
   daggerVersion = '2.0.2'
+
+  javaxInjectVersion = '1'
   butterKnifeVersion = '7.0.1'
   glideVersion = '3.7.0'
   rxJavaVersion = '1.1.2'
@@ -21,6 +23,7 @@ ext {
   javaxAnnotationVersion = '1.0'
   gsonVersion = '2.3'
   retrofitVersion = '2.0.2'
+  realm = '0.88.3'
   androidAnnotationsVersion = '21.0.3'
 
   //Testing
@@ -58,7 +61,7 @@ ext {
 
   domainDependencies = [
       daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-      dagger:             "com.google.dagger:dagger:${daggerVersion}",
+      javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
       rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
   ]
@@ -71,8 +74,9 @@ ext {
   dataDependencies = [
       daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
       dagger:             "com.google.dagger:dagger:${daggerVersion}",
-      retrofit:             "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-      gson:               "com.google.code.gson:gson:${gsonVersion}",
+      realm:              "io.realm:realm-android:${realm}",
+      retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+      retrofitGson:       "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
       rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
       rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
