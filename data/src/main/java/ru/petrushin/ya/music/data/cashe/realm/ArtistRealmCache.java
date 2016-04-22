@@ -23,11 +23,9 @@ import rx.Observable;
   private static final long EXPIRATION_TIME = 60 * 10 * 1000;
   private static final String ARTISTS_NAME = "artists.realm";
   private static final String EXPIRED_KEY = "artist_expired";
-  private final Realm realm;
 
   @Inject public ArtistRealmCache(Context context) {
     initConfig(context);
-    realm = Realm.getDefaultInstance();
   }
 
   public void initConfig(Context context) {
@@ -38,38 +36,51 @@ import rx.Observable;
   }
 
   @Override public Observable<Artist> getArtist(long artistId) {
-    return Observable.just(
-        mapToObject(realm.where(ArtistRealm.class).equalTo("id", artistId).findFirst()));
+    Realm realm = Realm.getDefaultInstance();
+    Artist artist = mapToObject(realm.where(ArtistRealm.class).equalTo("id", artistId).findFirst());
+    realm.close();
+    return Observable.just(artist);
   }
 
   @Override public Observable<List<Artist>> getAllArtists() {
+    Realm realm = Realm.getDefaultInstance();
     List<Artist> artists = new ArrayList<>();
     RealmResults<ArtistRealm> result = realm.where(ArtistRealm.class).findAll();
     for (int i = 0; i < result.size(); i++) {
       ArtistRealm artistRealm = result.get(i);
       artists.add(mapToObject(artistRealm));
     }
+    realm.close();
     return Observable.just(artists);
   }
 
   @Override public void putArtists(List<Artist> artists) {
+    Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
     for (Artist artist : artists) {
-      mapToRealm(artist);
+      mapToRealm(realm, artist);
+
     }
     ExpiredRealm expiredRealm = realm.createObject(ExpiredRealm.class);
     expiredRealm.setKey(EXPIRED_KEY);
     expiredRealm.setUpdatedTime(System.currentTimeMillis());
     realm.commitTransaction();
+    realm.close();
   }
 
-  @Override public void putArtist(Artist artist) {
+  private void putArtist(Realm realm, Artist artist) {
     realm.beginTransaction();
-    mapToRealm(artist);
+    mapToRealm(realm, artist);
     realm.commitTransaction();
   }
 
-  private ArtistRealm mapToRealm(Artist artist) {
+  @Override public void putArtist(Artist artist) {
+    Realm realm = Realm.getDefaultInstance();
+    putArtist(realm, artist);
+    realm.close();
+  }
+
+  private ArtistRealm mapToRealm(Realm realm, Artist artist) {
     ArtistRealm artistRealm = realm.createObject(ArtistRealm.class);
     artistRealm.setId(artist.getArtistId());
     artistRealm.setName(artist.getName());
@@ -82,10 +93,12 @@ import rx.Observable;
       RealmList<RealmString> genresRealm = new RealmList<>();
       for (String genre : artist.getGenres()) {
         RealmString genreRealm = realm.createObject(RealmString.class);
+        genreRealm.setValue(genre);
         genresRealm.add(genreRealm);
       }
       artistRealm.setGenres(genresRealm);
     }
+
 
     if (artist.getCover() != null) {
       CoverRealm coverRealm = realm.createObject(CoverRealm.class);
@@ -124,18 +137,35 @@ import rx.Observable;
   }
 
   @Override public boolean isCashed(long artistId) {
+    Realm realm = Realm.getDefaultInstance();
     ArtistRealm artistRealm = realm.where(ArtistRealm.class).equalTo("id", artistId).findFirst();
-    return artistRealm != null;
+    boolean isCached = artistRealm != null;
+    realm.close();
+    return isCached;
   }
 
   @Override public boolean isExpired() {
+    Realm realm = Realm.getDefaultInstance();
     ExpiredRealm expiredRealm =
         realm.where(ExpiredRealm.class).equalTo("key", EXPIRED_KEY).findFirst();
-    return expiredRealm == null
+    boolean isExpired = expiredRealm == null
         || (expiredRealm.getUpdatedTime() + EXPIRATION_TIME) < System.currentTimeMillis();
+    realm.close();
+    return isExpired;
   }
 
   @Override public void clearArtists() {
+    Realm realm = Realm.getDefaultInstance();
+    ExpiredRealm expiredRealm =
+        realm.where(ExpiredRealm.class).equalTo("key", EXPIRED_KEY).findFirst();
+    realm.beginTransaction();
+    if (expiredRealm != null) {
+
+      expiredRealm.removeFromRealm();
+    }
+    realm.clear(ArtistRealm.class);
+    realm.commitTransaction();
+    realm.close();
 
   }
 }

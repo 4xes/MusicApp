@@ -7,7 +7,7 @@ import rx.Observable;
 /**
  * For retrieving data from the network
  */
-public interface RestClient {
+public interface ArtistRestClient {
   /**
    * Retrieves an {@link rx.Observable} which will emit a List of {@link Artist}.
    */
