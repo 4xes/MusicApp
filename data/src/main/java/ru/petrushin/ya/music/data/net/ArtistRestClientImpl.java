@@ -11,6 +11,9 @@ import ru.petrushin.ya.music.domain.Artist;
 import rx.Observable;
 import rx.Subscriber;
 
+/**
+ * {@link ArtistRestClient} implementation for retrieving data from the network.
+ */
 @Singleton public class ArtistRestClientImpl implements ArtistRestClient {
 
   private final YandexService yandexService;

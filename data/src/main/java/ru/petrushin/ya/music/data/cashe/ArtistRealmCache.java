@@ -1,4 +1,4 @@
-package ru.petrushin.ya.music.data.cashe.realm;
+package ru.petrushin.ya.music.data.cashe;
 
 import android.content.Context;
 import io.realm.Realm;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import ru.petrushin.ya.music.data.cashe.ArtistCache;
 import ru.petrushin.ya.music.data.cashe.realm.model.ArtistRealm;
 import ru.petrushin.ya.music.data.cashe.realm.model.CoverRealm;
 import ru.petrushin.ya.music.data.cashe.realm.model.ExpiredRealm;
@@ -20,7 +19,7 @@ import rx.Observable;
 
 @Singleton public class ArtistRealmCache implements ArtistCache {
 
-  private static final long EXPIRATION_TIME = 60 * 10 * 1000;
+  private static final long EXPIRATION_TIME = 120 * 10 * 1000;
   private static final String ARTISTS_NAME = "artists.realm";
   private static final String EXPIRED_KEY = "artist_expired";
 
@@ -80,6 +79,12 @@ import rx.Observable;
     realm.close();
   }
 
+  /**
+   * Transform {@link Artist} into a Collection of {@link ArtistRealm}.
+   *
+   * @param artist Object to be transformed.
+   * @return {@link ArtistRealm}
+   */
   private ArtistRealm mapToRealm(Realm realm, Artist artist) {
     ArtistRealm artistRealm = realm.createObject(ArtistRealm.class);
     artistRealm.setId(artist.getArtistId());
@@ -109,6 +114,12 @@ import rx.Observable;
     return artistRealm;
   }
 
+  /**
+   * Transform a {@link ArtistRealm} into a Collection of {@link Artist}.
+   *
+   * @param artistRealm Object to be transformed.
+   * @return {@link Artist}
+   */
   private Artist mapToObject(ArtistRealm artistRealm) {
     Artist artist = new Artist(artistRealm.getId());
     artist.setName(artistRealm.getName());
@@ -136,6 +147,12 @@ import rx.Observable;
     return artist;
   }
 
+  /**
+   * If artist saved by id
+   *
+   * @param artistId used to look for inside the cache.
+   * @return true if the element is cached, otherwise false.
+   */
   @Override public boolean isCashed(long artistId) {
     Realm realm = Realm.getDefaultInstance();
     ArtistRealm artistRealm = realm.where(ArtistRealm.class).equalTo("id", artistId).findFirst();
@@ -144,6 +161,10 @@ import rx.Observable;
     return isCached;
   }
 
+  /**
+   * Check if cache is expired
+   * @return true if the cache is expired, otherwise false.
+   */
   @Override public boolean isExpired() {
     Realm realm = Realm.getDefaultInstance();
     ExpiredRealm expiredRealm =
@@ -154,6 +175,9 @@ import rx.Observable;
     return isExpired;
   }
 
+  /**
+   * Evict {@link ArtistRealm} and remove last record time when it was saved {@link ExpiredRealm}
+   */
   @Override public void clearArtists() {
     Realm realm = Realm.getDefaultInstance();
     ExpiredRealm expiredRealm =

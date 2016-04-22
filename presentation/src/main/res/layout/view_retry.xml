@@ -12,6 +12,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
       android:text="@string/artists_message_error_loading"
       />
   <Button
@@ -19,7 +21,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
+      style="@style/Widget.AppCompat.Button.Borderless"
       android:text="@string/base.retry"
-      android:visibility="gone"
       />
 </LinearLayout>

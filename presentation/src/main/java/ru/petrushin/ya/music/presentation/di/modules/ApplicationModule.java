@@ -8,7 +8,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 import ru.petrushin.ya.music.data.ArtistRepositoryImpl;
 import ru.petrushin.ya.music.data.cashe.ArtistCache;
-import ru.petrushin.ya.music.data.cashe.realm.ArtistRealmCache;
+import ru.petrushin.ya.music.data.cashe.ArtistRealmCache;
 import ru.petrushin.ya.music.data.net.ArtistRestClient;
 import ru.petrushin.ya.music.data.net.ArtistRestClientImpl;
 import ru.petrushin.ya.music.domain.interactor.Interactor;

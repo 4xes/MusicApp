@@ -1,7 +1,9 @@
 package ru.petrushin.ya.music.presentation.view.presenter;
 
+import java.lang.ref.WeakReference;
+
 public abstract class BasePresenter<View, Router> {
-  private View view;
+  private WeakReference<View> view;
   private Router router;
 
   public abstract void onStart();
@@ -9,11 +11,11 @@ public abstract class BasePresenter<View, Router> {
   public abstract void onStop();
 
   public View getView() {
-    return view;
+    return view.get();
   }
 
   public void setView(View view) {
-    this.view = view;
+    this.view = new WeakReference<>(view);
   }
 
   public Router getRouter() {

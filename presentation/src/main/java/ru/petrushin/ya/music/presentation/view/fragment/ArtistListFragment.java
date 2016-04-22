@@ -66,7 +66,7 @@ public class ArtistListFragment extends BaseMainFragment implements ArtistListVi
   }
 
   @Override public void hideRetry() {
-    btnRetry.setVisibility(View.GONE);
+    retry.setVisibility(View.GONE);
   }
 
   @Override public void showEmpty() {
