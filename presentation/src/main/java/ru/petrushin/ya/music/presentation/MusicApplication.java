@@ -7,6 +7,7 @@ import ru.petrushin.ya.music.presentation.di.components.ApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.components.DaggerApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.modules.ApplicationModule;
 import ru.petrushin.ya.music.presentation.di.modules.DomainModule;
+import timber.log.Timber;
 
 public class MusicApplication extends Application {
 
@@ -16,6 +17,7 @@ public class MusicApplication extends Application {
     super.onCreate();
     this.initializeInjector();
     this.initializeLeakDetection();
+    this.initializeLogger();
   }
 
   private void initializeInjector() {
@@ -32,6 +34,12 @@ public class MusicApplication extends Application {
   private void initializeLeakDetection() {
     if (BuildConfig.DEBUG) {
       LeakCanary.install(this);
+    }
+  }
+
+  private void initializeLogger() {
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree());
     }
   }
 }
