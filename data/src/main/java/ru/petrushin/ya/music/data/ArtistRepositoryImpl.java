@@ -5,25 +5,29 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import ru.petrushin.ya.music.data.cashe.ArtistCache;
 import ru.petrushin.ya.music.data.exception.ArtistNotFoundException;
-import ru.petrushin.ya.music.data.net.RestClient;
+import ru.petrushin.ya.music.data.net.ArtistRestClient;
 import ru.petrushin.ya.music.domain.Artist;
 import ru.petrushin.ya.music.domain.repository.ArtistRepository;
 import rx.Observable;
 
 @Singleton public class ArtistRepositoryImpl implements ArtistRepository {
-  private ArtistCache artistCache;
-  private RestClient restClient;
 
-  @Inject public ArtistRepositoryImpl(ArtistCache artistCache, RestClient restClient) {
+  private ArtistCache artistCache;
+  private ArtistRestClient artistRestClient;
+
+  @Inject public ArtistRepositoryImpl(ArtistCache artistCache, ArtistRestClient artistRestClient) {
     this.artistCache = artistCache;
-    this.restClient = restClient;
+    this.artistRestClient = artistRestClient;
   }
 
   @Override public Observable<List<Artist>> artists() {
     if (!artistCache.isExpired()) {
       return artistCache.getAllArtists();
     }
-    return restClient.artists().doOnNext(artists -> artistCache.putArtists(artists));
+    return artistRestClient.artists().doOnNext(artists -> {
+        artistCache.clearArtists();
+        artistCache.putArtists(artists);
+    });
   }
 
   @Override public Observable<Artist> artist(long artistId) {

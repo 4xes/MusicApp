@@ -6,5 +6,5 @@ import retrofit2.http.GET;
 import ru.petrushin.ya.music.domain.Artist;
 
 interface YandexService {
-  @GET("/artists.json") Call<List<Artist>> artists();
+  @GET("artists.json") Call<List<Artist>> artists();
 }
