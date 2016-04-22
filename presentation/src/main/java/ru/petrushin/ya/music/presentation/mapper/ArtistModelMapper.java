@@ -1,5 +1,8 @@
 package ru.petrushin.ya.music.presentation.mapper;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 import ru.petrushin.ya.music.domain.Artist;
@@ -54,5 +57,26 @@ public class ArtistModelMapper {
 
 
     return artistModel;
+  }
+
+  /**
+   * Transform a Collection of {@link Artist} into a Collection of {@link ArtistModel}.
+   *
+   * @param artistCollection Objects to be transformed.
+   * @return List of {@link ArtistModel}.
+   */
+  public Collection<ArtistModel> transform(Collection<Artist> artistCollection) {
+    Collection<ArtistModel> artistModelsCollection;
+
+    if (artistCollection != null && !artistCollection.isEmpty()) {
+      artistModelsCollection = new ArrayList<>();
+      for (Artist artist : artistCollection) {
+        artistModelsCollection.add(transform(artist));
+      }
+    } else {
+      artistModelsCollection = Collections.emptyList();
+    }
+
+    return artistModelsCollection;
   }
 }

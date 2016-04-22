@@ -17,22 +17,27 @@ package ru.petrushin.ya.music.presentation.di.components;
 
 import android.content.Context;
 import dagger.Component;
+import javax.inject.Named;
 import javax.inject.Singleton;
+import ru.petrushin.ya.music.domain.interactor.Interactor;
 import ru.petrushin.ya.music.domain.repository.ArtistRepository;
 import ru.petrushin.ya.music.presentation.di.modules.ApplicationModule;
-import ru.petrushin.ya.music.presentation.di.modules.DomainModule;
 import ru.petrushin.ya.music.presentation.view.activity.BaseActivity;
+import rx.Scheduler;
 
 /**
  * A component whose lifetime is the life of the application.
  */
 @Singleton // Constraints this component to one-per-application or unscoped bindings.
-@Component(modules = { ApplicationModule.class, DomainModule.class })
+@Component(modules = { ApplicationModule.class })
 public interface ApplicationComponent {
   void inject(BaseActivity baseActivity);
 
   //Exposed to sub-graphs.
   Context context();
 
+  @Named(Interactor.JOB) Scheduler jobScheduler();
+
+  @Named(Interactor.UI) Scheduler uiScheduler();
   ArtistRepository userRepository();
 }

@@ -9,12 +9,5 @@ public interface ArtistListView extends BaseMainView {
    *
    * @param artistModels The collection of {@link ArtistModel} that will be shown.
    */
-  void renderArtisList(Collection<ArtistModel> artistModels);
-
-  /**
-   * View a {@link ArtistModel} details.
-   *
-   * @param artistModel The artist that will be shown.
-   */
-  void viewArtist(ArtistModel artistModel);
+  void renderArtistList(Collection<ArtistModel> artistModels);
 }

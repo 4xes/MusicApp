@@ -2,28 +2,35 @@ package ru.petrushin.ya.music.presentation.view.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import ru.petrushin.ya.music.presentation.di.components.ActivityComponent;
-import ru.petrushin.ya.music.presentation.view.model.ArtistModel;
+import ru.petrushin.ya.music.R;
+import ru.petrushin.ya.music.presentation.di.HasComponent;
+import ru.petrushin.ya.music.presentation.di.components.ArtistComponent;
+import ru.petrushin.ya.music.presentation.di.components.DaggerArtistComponent;
+import ru.petrushin.ya.music.presentation.di.modules.ArtistModule;
+import ru.petrushin.ya.music.presentation.view.annotation.Layout;
+import ru.petrushin.ya.music.presentation.view.fragment.ArtistListFragment;
 import ru.petrushin.ya.music.presentation.view.navigation.MainRouter;
 
-public class MainActivity extends BaseActivity implements MainRouter {
+@Layout(id = R.layout.activity_main) public class MainActivity extends BaseActivity
+    implements MainRouter, HasComponent<ArtistComponent> {
 
-  private ActivityComponent activityComponent;
+  private ArtistComponent artistComponent;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    initializeComponent();
 
-    //mainActivityComponent = DaggerMainActivityComponent.builder()
-    //    .domainModule(new DomainModule())
-    //    .build();
+    if (savedInstanceState == null) {
+      openArtists();
+    }
   }
 
-  @Override public void showArtist(ArtistModel artistModel) {
+  @Override public void showArtist(long aristId) {
 
   }
 
   @Override public void openArtists() {
-
+    addFragment(R.id.content, new ArtistListFragment());
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -37,5 +44,17 @@ public class MainActivity extends BaseActivity implements MainRouter {
       default:
         return super.onOptionsItemSelected(item);
     }
+  }
+
+  private void initializeComponent() {
+    artistComponent = DaggerArtistComponent.builder()
+        .applicationComponent(getApplicationComponent())
+        .activityModule(getActivityModule())
+        .artistModule(new ArtistModule())
+        .build();
+  }
+
+  @Override public ArtistComponent getComponent() {
+    return artistComponent;
   }
 }

@@ -5,10 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import javax.inject.Inject;
+import butterknife.ButterKnife;
 import ru.petrushin.ya.music.presentation.MusicApplication;
 import ru.petrushin.ya.music.presentation.di.components.ApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.modules.ActivityModule;
+import ru.petrushin.ya.music.presentation.view.annotation.Layout;
 import ru.petrushin.ya.music.presentation.view.fragment.BaseFragment;
 
 /**
@@ -16,11 +17,19 @@ import ru.petrushin.ya.music.presentation.view.fragment.BaseFragment;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-  @Inject Navigator navigator;
-
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    this.getApplicationComponent().inject(this);
+    Class cls = getClass();
+    if (cls.isAnnotationPresent(Layout.class)) {
+      Layout layout = (Layout) cls.getAnnotation(Layout.class);
+      setContentView(layout.id());
+      ButterKnife.bind(this);
+    }
+  }
+
+  @Override protected void onDestroy() {
+    ButterKnife.unbind(this);
+    super.onDestroy();
   }
 
   /**

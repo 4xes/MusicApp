@@ -12,8 +12,8 @@ public class ArtistListInteractor extends Interactor<List<Artist>, Void> {
 
   private final ArtistRepository artistRepository;
 
-  @Inject
-  public ArtistListInteractor(ArtistRepository artistRepository, @Named("JOB") Scheduler jobScheduler, @Named("UI") Scheduler uiScheduler) {
+  @Inject public ArtistListInteractor(ArtistRepository artistRepository,
+      @Named(Interactor.JOB) Scheduler jobScheduler, @Named(Interactor.UI) Scheduler uiScheduler) {
     super(jobScheduler, uiScheduler);
     this.artistRepository = artistRepository;
   }

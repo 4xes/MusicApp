@@ -6,7 +6,6 @@ import ru.petrushin.ya.music.BuildConfig;
 import ru.petrushin.ya.music.presentation.di.components.ApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.components.DaggerApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.modules.ApplicationModule;
-import ru.petrushin.ya.music.presentation.di.modules.DomainModule;
 import timber.log.Timber;
 
 public class MusicApplication extends Application {
@@ -23,7 +22,6 @@ public class MusicApplication extends Application {
   private void initializeInjector() {
     this.applicationComponent = DaggerApplicationComponent.builder()
         .applicationModule(new ApplicationModule(this))
-        .domainModule(new DomainModule())
         .build();
   }
 

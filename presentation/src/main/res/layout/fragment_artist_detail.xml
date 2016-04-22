@@ -1,11 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:showIn="@layout/content_main"
     >
-
   <include
       android:id="@+id/appbar"
       layout="@layout/view_toolbar"
@@ -14,7 +11,5 @@
       layout="@layout/view_artist_details"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_below="@id/appbar"
       />
-
-</RelativeLayout>
+</LinearLayout>

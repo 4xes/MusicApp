@@ -4,6 +4,7 @@
   <color name="nobel">#999999</color>
   <color name="black_transparent_15">#26000000</color>
   <color name="cover_loading">#e5e5e5</color>
+  <color name="divider">#F2F2F2</color>
 
   <color name="colorPrimary">@color/medium_purple</color>
   <color name="colorPrimaryDark">@color/medium_purple</color>

@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/retry"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:visibility="gone"
+    android:orientation="vertical"
     >
-  <Button
+  <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/base.retry"
+      android:layout_gravity="center_horizontal"
+      android:text="@string/artists_message_error_loading"
       />
-</FrameLayout>
+  <Button
+      android:id="@+id/btn_retry"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:text="@string/base.retry"
+      android:visibility="gone"
+      />
+</LinearLayout>

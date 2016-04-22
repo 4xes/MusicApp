@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import java.util.concurrent.atomic.AtomicInteger;
-import ru.petrushin.ya.music.presentation.di.HasComponent;
 import ru.petrushin.ya.music.presentation.view.activity.BaseActivity;
 import ru.petrushin.ya.music.presentation.view.annotation.Back;
 import ru.petrushin.ya.music.presentation.view.annotation.Layout;
@@ -68,10 +67,4 @@ public abstract class BaseFragment extends Fragment {
     return Long.toString(fragmentId);
   }
 
-  /**
-   * Gets a component for dependency injection by its type.
-   */
-  @SuppressWarnings("unchecked") public <C> C getComponent(Class<C> componentType) {
-    return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
-  }
 }

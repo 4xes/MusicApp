@@ -1,9 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:showIn="@layout/content_main"
     >
 
   <include
@@ -11,25 +9,23 @@
       layout="@layout/view_toolbar"
       />
 
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/recyclerView"
-      android:layout_below="@id/appbar"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      />
 
-  <include
+  <FrameLayout
       android:layout_below="@id/appbar"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      layout="@layout/view_progress"
-      />
+      >
 
-  <include
-      android:layout_below="@id/appbar"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      layout="@layout/view_retry"
-      />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <include layout="@layout/view_progress"/>
+
+    <include layout="@layout/view_empty"/>
+
+    <include layout="@layout/view_retry"/>
+  </FrameLayout>
 
 </RelativeLayout>

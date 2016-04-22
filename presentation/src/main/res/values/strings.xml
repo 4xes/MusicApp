@@ -20,4 +20,11 @@
   <string name="artist_detail_works">%1$s \u0020\u2022\u0020 %2$s</string>
 
   <string name="base.retry">Повторить</string>
+
+  <string name="title_artists">Исполнители</string>
+  <string name="exception_message_undefined">Неизвестная ошибка</string>
+  <string name="exception_message_network">Отсутствует интернет соединение</string>
+  <string name="exception_message_artist_not_found">Не удалось загрузить данные об исполнителе</string>
+  <string name="artists_message_empty_list">Список исполнителей пуст</string>
+  <string name="artists_message_error_loading">Не удалось загрузить список исполнителей</string>
 </resources>

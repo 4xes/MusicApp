@@ -13,7 +13,7 @@ public interface BaseMainView {
   void showLoading();
 
   /**
-   * Hide a loading view.
+   * Hide a view with a progress bar indicating a loading process.
    */
   void hideLoading();
 
@@ -23,9 +23,29 @@ public interface BaseMainView {
   void showRetry();
 
   /**
-   * Hide a retry view shown if there was an error when retrieving data.
+   * Show a retry view in case of an error when retrieving data.
    */
   void hideRetry();
+
+  /**
+   * Show a empty view in case of empty retrieving data
+   */
+  void showEmpty();
+
+  /**
+   * Hide a empty view in case of empty retrieving data
+   */
+  void hideEmpty();
+
+  /**
+   * Show a content view in case of empty retrieving data
+   */
+  void showContent();
+
+  /**
+   * Hide a content view in case of empty retrieving data
+   */
+  void hideContent();
 
   /**
    * Show an error message

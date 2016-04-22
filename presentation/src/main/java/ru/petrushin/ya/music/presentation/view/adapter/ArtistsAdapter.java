@@ -1,5 +1,6 @@
 package ru.petrushin.ya.music.presentation.view.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-
-import javax.inject.Inject;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.bumptech.glide.Glide;
+import javax.inject.Inject;
 import ru.petrushin.ya.music.R;
 import ru.petrushin.ya.music.presentation.view.model.ArtistModel;
 
@@ -22,14 +20,16 @@ public class ArtistsAdapter extends ArrayRecyclerAdapter<ArtistModel, ArtistsAda
     private final LayoutInflater layoutInflater;
     private final Context context;
 
-    @Inject
-    public ArtistsAdapter(Context context) {
-        this.context = context;
+    @Inject public ArtistsAdapter(Activity context) {
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context.getApplicationContext();
 
     }
 
+    @Override public long getItemId(int position) {
+        return getItem(position).getArtistId();
+    }
 
     @Override
     public ArtistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

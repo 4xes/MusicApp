@@ -2,6 +2,9 @@
     package="ru.petrushin.ya.music"
     >
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
   <application
       android:name=".presentation.MusicApplication"
       android:allowBackup="true"
@@ -9,7 +12,18 @@
       android:icon="@mipmap/ic_launcher"
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
+      android:fullBackupContent="false"
       >
+
+    <activity
+        android:name=".presentation.view.activity.MainActivity"
+        android:theme="@style/AppTheme.NoActionBar"
+        >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>
