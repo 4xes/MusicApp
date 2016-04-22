@@ -34,6 +34,7 @@ ext {
   dexmakerVersion = '1.0'
   espressoVersion = '2.0'
   testingSupportLibVersion = '0.1'
+  finestwebview = '1.2.5'
 
   //Logs
   timber = '4.1.2'
@@ -43,16 +44,17 @@ ext {
 
   presentationDependencies = [
       supportAppcompat:   "com.android.support:appcompat-v7:${supportAndroid}",
-      supportDesing   :      "com.android.support:design:${supportAndroid}",
-      recyclerView    :       "com.android.support:recyclerview-v7:${supportAndroid}",
-      daggerCompiler  :     "com.google.dagger:dagger-compiler:${daggerVersion}",
-      dagger          :             "com.google.dagger:dagger:${daggerVersion}",
-      butterKnife     :        "com.jakewharton:butterknife:${butterKnifeVersion}",
-      glide           :              "com.github.bumptech.glide:glide:${glideVersion}",
-      rxJava          :             "io.reactivex:rxjava:${rxJavaVersion}",
-      rxAndroid       :          "io.reactivex:rxandroid:${rxAndroidVersion}",
-      javaxAnnotation :    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      timber          : "com.jakewharton.timber:timber:${timber}"
+      supportDesing   : "com.android.support:design:${supportAndroid}",
+      recyclerView    : "com.android.support:recyclerview-v7:${supportAndroid}",
+      daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+      dagger          : "com.google.dagger:dagger:${daggerVersion}",
+      butterKnife     : "com.jakewharton:butterknife:${butterKnifeVersion}",
+      glide           : "com.github.bumptech.glide:glide:${glideVersion}",
+      rxJava          : "io.reactivex:rxjava:${rxJavaVersion}",
+      rxAndroid       : "io.reactivex:rxandroid:${rxAndroidVersion}",
+      javaxAnnotation : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+      timber          : "com.jakewharton.timber:timber:${timber}",
+      finestwebview   : "com.thefinestartist:finestwebview:${finestwebview}"
   ]
 
   presentationTestDependencies = [

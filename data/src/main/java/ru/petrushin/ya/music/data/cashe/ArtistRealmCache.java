@@ -19,7 +19,7 @@ import rx.Observable;
 
 @Singleton public class ArtistRealmCache implements ArtistCache {
 
-  private static final long EXPIRATION_TIME = 120 * 10 * 1000;
+  private static final long EXPIRATION_TIME = 4 * 60 * 10 * 1000;
   private static final String ARTISTS_NAME = "artists.realm";
   private static final String EXPIRED_KEY = "artist_expired";
 

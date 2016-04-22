@@ -86,6 +86,7 @@ dependencies {
   compile presentationDependencies.rxAndroid
   compile presentationDependencies.javaxAnnotation
   compile presentationDependencies.timber
+  compile presentationDependencies.finestwebview
 
   androidTestCompile presentationTestDependencies.mockito
   androidTestCompile presentationTestDependencies.dexmaker

@@ -15,4 +15,12 @@ public interface MainRouter {
    * Show screen with artists
    */
   void openArtists();
+
+  /**
+   * Showed webView with site of artist
+   *
+   * @param name name of artist
+   * @param link link artist's web page
+   */
+  void showSiteArtist(String name, String link);
 }

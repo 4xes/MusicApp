@@ -59,8 +59,7 @@ public abstract class BaseFragment extends Fragment {
       Title title = (Title) cls.getAnnotation(Title.class);
       return getString(title.title());
     }
-    throw new IllegalArgumentException(
-        "You have to override this method or set title annotation to fragment");
+    return null;
   }
 
   public void setTitle(String title) {

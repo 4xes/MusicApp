@@ -1,7 +1,6 @@
 package ru.petrushin.ya.music.presentation;
 
 import android.app.Application;
-import com.squareup.leakcanary.LeakCanary;
 import ru.petrushin.ya.music.BuildConfig;
 import ru.petrushin.ya.music.presentation.di.components.ApplicationComponent;
 import ru.petrushin.ya.music.presentation.di.components.DaggerApplicationComponent;
@@ -31,7 +30,7 @@ public class MusicApplication extends Application {
 
   private void initializeLeakDetection() {
     if (BuildConfig.DEBUG) {
-      LeakCanary.install(this);
+      //LeakCanary.install(this);
     }
   }
 

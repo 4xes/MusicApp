@@ -1,7 +1,9 @@
 package ru.petrushin.ya.music.presentation.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
+import com.thefinestartist.finestwebview.FinestWebView;
 import ru.petrushin.ya.music.R;
 import ru.petrushin.ya.music.presentation.di.HasComponent;
 import ru.petrushin.ya.music.presentation.di.components.ArtistComponent;
@@ -32,6 +34,21 @@ import ru.petrushin.ya.music.presentation.view.navigation.MainRouter;
 
   @Override public void openArtists() {
     addFragment(R.id.content, new ArtistListFragment());
+  }
+
+  @Override public void showSiteArtist(String name, String link) {
+    FinestWebView.Builder finestWebView = new FinestWebView.Builder(this);
+    if (name != null) {
+      finestWebView.titleDefault(name);
+    }
+    finestWebView.titleColor(
+        ContextCompat.getColor(getApplicationContext(), android.R.color.white));
+    finestWebView.urlColor(
+        ContextCompat.getColor(getApplicationContext(), R.color.transparent_white_hex_99));
+    finestWebView.backPressToClose(true);
+    finestWebView.iconDefaultColor(
+        ContextCompat.getColor(getApplicationContext(), android.R.color.white));
+    finestWebView.show(link);
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
