@@ -102,6 +102,11 @@ public class ArtistListFragment extends BaseMainFragment implements ArtistListVi
     recyclerView.setAdapter(artistsAdapter);
   }
 
+  @Override public void onDestroyView() {
+    recyclerView.setAdapter(null);
+    super.onDestroyView();
+  }
+
   @NonNull @Override protected BasePresenter getPresenter() {
     return artistListPresenter;
   }

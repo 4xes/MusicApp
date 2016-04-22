@@ -22,6 +22,7 @@
   <string name="base.retry">Повторить</string>
 
   <string name="title_artists">Исполнители</string>
+  <string name="title_artist">Исполнитель</string>
   <string name="exception_message_undefined">Неизвестная ошибка</string>
   <string name="exception_message_network">Отсутствует интернет соединение</string>
   <string name="exception_message_artist_not_found">Не удалось загрузить данные об исполнителе</string>

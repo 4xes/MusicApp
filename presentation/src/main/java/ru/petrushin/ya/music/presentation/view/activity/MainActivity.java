@@ -8,6 +8,7 @@ import ru.petrushin.ya.music.presentation.di.components.ArtistComponent;
 import ru.petrushin.ya.music.presentation.di.components.DaggerArtistComponent;
 import ru.petrushin.ya.music.presentation.di.modules.ArtistModule;
 import ru.petrushin.ya.music.presentation.view.annotation.Layout;
+import ru.petrushin.ya.music.presentation.view.fragment.ArtistDetailFragment;
 import ru.petrushin.ya.music.presentation.view.fragment.ArtistListFragment;
 import ru.petrushin.ya.music.presentation.view.navigation.MainRouter;
 
@@ -25,8 +26,8 @@ import ru.petrushin.ya.music.presentation.view.navigation.MainRouter;
     }
   }
 
-  @Override public void showArtist(long aristId) {
-
+  @Override public void showArtist(long artistId) {
+    addBackStack(R.id.content, ArtistDetailFragment.newInstance(artistId));
   }
 
   @Override public void openArtists() {

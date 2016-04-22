@@ -1,13 +1,7 @@
 package ru.petrushin.ya.music.presentation.view.model;
 
-
 public class ArtistModel {
   private final long artistId;
-
-  public ArtistModel(long artistId) {
-    this.artistId = artistId;
-  }
-
   private String name;
   private String genres;
   private int tracks;
@@ -16,6 +10,10 @@ public class ArtistModel {
   private String description;
   private String coverSmall;
   private String coverBig;
+
+  public ArtistModel(long artistId) {
+    this.artistId = artistId;
+  }
 
   public long getArtistId() {
     return artistId;

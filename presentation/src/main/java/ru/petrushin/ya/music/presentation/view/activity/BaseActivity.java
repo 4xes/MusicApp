@@ -54,6 +54,18 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   /**
+   * Setting title of tollbar
+   */
+  public void resolveTitle(String title) {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      if (title != null) {
+        actionBar.setTitle(title);
+      }
+    }
+  }
+
+  /**
    * Adds a {@link Fragment} to this activity's layout.
    *
    * @param containerViewId The container view to where add the fragment.
@@ -65,16 +77,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     tx.commit();
   }
 
-  private void replace(int containerViewId, BaseFragment fragment) {
+  protected void replace(int containerViewId, BaseFragment fragment) {
     FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-    tx.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     tx.replace(containerViewId, fragment, fragment.getFragmentName());
     tx.commit();
   }
 
-  private void addBackStack(int containerViewId, BaseFragment fragment) {
+  protected void addBackStack(int containerViewId, BaseFragment fragment) {
     FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-    tx.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     tx.replace(containerViewId, fragment);
     tx.addToBackStack(fragment.getFragmentName());
     tx.commit();

@@ -40,8 +40,9 @@ public class ArtistsAdapter extends ArrayRecyclerAdapter<ArtistModel, ArtistsAda
     @Override
     public void onBindViewHolder(ArtistViewHolder holder, int position) {
         final ArtistModel artistModel = getItem(position);
-        holder.textViewName.setText(artistModel.getName());
-        holder.textViewGenres.setText(artistModel.getGenres());
+        holder.textViewName.setText(artistModel.getName() != null ? artistModel.getName() : "");
+        holder.textViewGenres.setText(
+            artistModel.getGenres() != null ? artistModel.getGenres() : "");
         String albums = context.getResources().getQuantityString(R.plurals.n_albums, artistModel.getAlbums(), artistModel.getAlbums());
         String tracks = context.getResources().getQuantityString(R.plurals.n_tracks, artistModel.getTracks(), artistModel.getTracks());
         String worksCount = context.getString(R.string.artist_row_works, albums, tracks);

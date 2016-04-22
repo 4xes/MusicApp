@@ -63,6 +63,10 @@ public abstract class BaseFragment extends Fragment {
         "You have to override this method or set title annotation to fragment");
   }
 
+  public void setTitle(String title) {
+    ((BaseActivity) getActivity()).resolveTitle(title);
+  }
+
   public String getFragmentName() {
     return Long.toString(fragmentId);
   }
