@@ -1,11 +1,16 @@
 package ru.petrushin.ya.music.data.cache;
 
+import android.os.Build;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
+import ru.petrushin.ya.data.BuildConfig;
 import ru.petrushin.ya.music.data.ApplicationTestCase;
 import ru.petrushin.ya.music.data.cashe.ArtistRealmCache;
 import ru.petrushin.ya.music.domain.Artist;
@@ -14,11 +19,12 @@ import ru.petrushin.ya.music.domain.Cover;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.BDDMockito.given;
-
 /**
  * Очень долго бился почему тесты не работают, но потом зашел в репорт, а там Robolectric does not
  * support API level 23.
  */
+@Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP)
+@RunWith(RobolectricGradleTestRunner.class)
 public class CacheRealmTest extends ApplicationTestCase {
 
   private static final long FAKE_ARTIST_ID = 99L;
