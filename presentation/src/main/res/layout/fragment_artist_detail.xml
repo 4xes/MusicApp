@@ -36,6 +36,20 @@
             android:layout_height="match_parent"
             />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="top"
+            android:background="@drawable/gallery_shadow_background_top"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="90dp"
+            android:background="@drawable/gallery_shadow_background_bottom"
+            />
+
       </FrameLayout>
 
       <android.support.v7.widget.Toolbar
@@ -46,8 +60,10 @@
           app:popupTheme="@style/AppTheme.PopupOverlay"
           />
 
+
     </android.support.design.widget.CollapsingToolbarLayout>
   </android.support.design.widget.AppBarLayout>
+
 
   <include layout="@layout/view_artist_details"/>
 

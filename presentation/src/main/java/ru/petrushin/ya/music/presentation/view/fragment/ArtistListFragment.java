@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.OnClick;
 import java.util.Collection;
@@ -39,8 +40,9 @@ public class ArtistListFragment extends BaseMainFragment implements ArtistListVi
 
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
   @Bind(R.id.progress) ProgressBar progressBar;
-  @Bind(R.id.empty) View empty;
+  @Bind(R.id.empty) TextView empty;
   @Bind(R.id.retry) View retry;
+  @Bind(R.id.retry_text) TextView textViewRetry;
   @Bind(R.id.btn_retry) View btnRetry;
 
   public ArtistListFragment() {
@@ -64,6 +66,8 @@ public class ArtistListFragment extends BaseMainFragment implements ArtistListVi
       getActivity().getWindow()
           .setStatusBarColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
     }
+    empty.setText(getString(R.string.artists_message_empty_list));
+    textViewRetry.setText(getString(R.string.artists_message_error_loading_list));
     return view;
   }
 

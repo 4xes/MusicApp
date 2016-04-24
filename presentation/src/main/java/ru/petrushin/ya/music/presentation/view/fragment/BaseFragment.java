@@ -13,6 +13,7 @@ import ru.petrushin.ya.music.presentation.view.activity.BaseActivity;
 import ru.petrushin.ya.music.presentation.view.annotation.Back;
 import ru.petrushin.ya.music.presentation.view.annotation.Layout;
 import ru.petrushin.ya.music.presentation.view.annotation.Title;
+import timber.log.Timber;
 
 public abstract class BaseFragment extends Fragment {
   private static final AtomicInteger lastFragmentId = new AtomicInteger(0);
@@ -67,6 +68,7 @@ public abstract class BaseFragment extends Fragment {
   }
 
   public String getFragmentName() {
+    Timber.d("fragment_id %d", fragmentId);
     return Long.toString(fragmentId);
   }
 

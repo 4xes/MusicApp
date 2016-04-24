@@ -27,5 +27,6 @@
   <string name="exception_message_network">Отсутствует интернет соединение</string>
   <string name="exception_message_artist_not_found">Не удалось загрузить данные об исполнителе</string>
   <string name="artists_message_empty_list">Список исполнителей пуст</string>
-  <string name="artists_message_error_loading">Не удалось загрузить список исполнителей</string>
+  <string name="artist_message_error_loading">Не удалось загрузить пользователя, возможны вы открыли его во время обновления данных</string>
+  <string name="artists_message_error_loading_list">Не удалось загрузить список исполнителей</string>
 </resources>

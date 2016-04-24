@@ -29,11 +29,11 @@ import ru.petrushin.ya.music.presentation.view.navigation.MainRouter;
   }
 
   @Override public void showArtist(long artistId) {
-    addBackStack(R.id.content, ArtistDetailFragment.newInstance(artistId));
+    addBackStack(R.id.container, ArtistDetailFragment.newInstance(artistId));
   }
 
   @Override public void openArtists() {
-    addFragment(R.id.content, new ArtistListFragment());
+    addFragment(R.id.container, new ArtistListFragment());
   }
 
   @Override public void showSiteArtist(String name, String link) {

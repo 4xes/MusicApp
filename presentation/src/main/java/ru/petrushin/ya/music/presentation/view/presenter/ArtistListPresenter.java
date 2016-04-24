@@ -39,7 +39,7 @@ public class ArtistListPresenter extends BaseMainPresenter<ArtistListView> {
     this.artistListInteractor.execute(new ArtistListSubscriber());
   }
 
-  private final class ArtistListSubscriber extends Subscriber<List<Artist>> {
+  public final class ArtistListSubscriber extends Subscriber<List<Artist>> {
 
     @Override public void onStart() {
       if (getView() != null) {

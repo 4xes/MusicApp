@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -37,12 +38,17 @@ public class ArtistDetailFragment extends BaseMainFragment implements ArtistDeta
   @Bind(R.id.toolbar_layout) CollapsingToolbarLayout collapsingToolbarLayout;
   @Bind(R.id.toolbar) Toolbar toolbar;
 
+  @Bind(R.id.progress) ProgressBar progressBar;
+  @Bind(R.id.retry) View retry;
+  @Bind(R.id.retry_text) TextView textViewRetry;
+  @Bind(R.id.btn_retry) View btnRetry;
+  @Bind(R.id.content) View content;
+
   @Bind(R.id.avatar) ImageView imageAvatar;
   @Bind(R.id.genres) TextView textViewGenres;
   @Bind(R.id.description) TextView textViewDescription;
   @Bind(R.id.works) TextView textViewWorks;
   @Bind(R.id.fabOpenLink) FloatingActionButton fabOpenLink;
-
   private ArtistModel artistModel;
 
   public ArtistDetailFragment() {
@@ -55,6 +61,14 @@ public class ArtistDetailFragment extends BaseMainFragment implements ArtistDeta
     bundle.putLong(EXTRA_ARTIST_ID, artistId);
     fragment.setArguments(bundle);
     return fragment;
+  }
+
+  @Override public String getTitle() {
+    if (collapsingToolbarLayout.getTitle() != null) {
+      return collapsingToolbarLayout.getTitle().toString();
+    } else {
+      return null;
+    }
   }
 
   @OnClick(R.id.fabOpenLink) public void onClickFabOpenLink() {
@@ -80,6 +94,7 @@ public class ArtistDetailFragment extends BaseMainFragment implements ArtistDeta
           .setStatusBarColor(
               ContextCompat.getColor(getContext(), R.color.transparent_black_percent_15));
     }
+    textViewRetry.setText(getString(R.string.artists_message_error_loading_list));
     return view;
   }
 
@@ -119,5 +134,37 @@ public class ArtistDetailFragment extends BaseMainFragment implements ArtistDeta
         .getQuantityString(R.plurals.n_tracks, artistModel.getTracks(), artistModel.getTracks());
     String worksCount = getContext().getString(R.string.artist_detail_works, albums, tracks);
     textViewWorks.setText(worksCount);
+  }
+
+  @Override public void showLoading() {
+    progressBar.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideLoading() {
+    progressBar.setVisibility(View.GONE);
+  }
+
+  @Override public void showRetry() {
+    retry.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideRetry() {
+    retry.setVisibility(View.GONE);
+  }
+
+  @Override public void showEmpty() {
+    //empty
+  }
+
+  @Override public void hideEmpty() {
+    //empty
+  }
+
+  @Override public void showContent() {
+    content.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideContent() {
+    content.setVisibility(View.GONE);
   }
 }

@@ -45,17 +45,22 @@ public class ArtistDetailPresenter extends BaseMainPresenter<ArtistDetailView> {
     this.artistInteractor.execute(artistId, new ArtistSubscriber());
   }
 
-  private final class ArtistSubscriber extends Subscriber<Artist> {
+  public final class ArtistSubscriber extends Subscriber<Artist> {
 
     @Override public void onStart() {
-
+      getView().hideContent();
+      getView().hideRetry();
+      getView().showLoading();
     }
 
     @Override public void onCompleted() {
     }
 
     @Override public void onNext(Artist artist) {
+
       if (getView() != null) {
+        getView().hideLoading();
+        getView().showContent();
         getView().viewArtist(artistModelMapper.transform(artist));
       }
     }
@@ -65,8 +70,10 @@ public class ArtistDetailPresenter extends BaseMainPresenter<ArtistDetailView> {
         e.printStackTrace();
       }
       if (getView() != null) {
+        getView().hideLoading();
         getView().showError(ErrorMessageFactory.create(getView().context(),
             new DefaultErrorBundle((Exception) e).getException()));
+        getView().showRetry();
       }
     }
   }
