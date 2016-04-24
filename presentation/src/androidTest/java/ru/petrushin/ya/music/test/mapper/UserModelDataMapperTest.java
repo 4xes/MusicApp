@@ -34,6 +34,8 @@ public class UserModelDataMapperTest extends TestCase {
   private static final long FAKE_USER_ID = 99L;
   private static final String FAKE_NAME = "Yo Yo";
   private static final String FAKE_DESCRIPTION = "Famous music artist";
+  private static final String FAKE_GENRES1 = "pop";
+  private static final String FAKE_GENRES2 = "electronics";
   private static final String FAKE_AVATAR_SMALL = "http://www.yo-yo-music.club/avatar/small";
   private static final String FAKE_AVATAR_BIG = "http://www.yo-yo-music.club/avatar/big";
   private static final String FAKE_LINK = "http://www.yo-yo-music.club";
@@ -51,6 +53,10 @@ public class UserModelDataMapperTest extends TestCase {
 
     assertThat(artistModel, is(instanceOf(ArtistModel.class)));
     assertThat(artistModel.getArtistId(), is(FAKE_USER_ID));
+    assertThat(artistModel.getGenres(), is(FAKE_GENRES1 + ", " + FAKE_GENRES2));
+    assertThat(artistModel.getCoverSmall(), is(FAKE_AVATAR_SMALL));
+    assertThat(artistModel.getCoverBig(), is(FAKE_AVATAR_BIG));
+    assertThat(artistModel.getLink(), is(FAKE_LINK));
   }
 
   public void testTransformUserCollection() {
@@ -72,6 +78,10 @@ public class UserModelDataMapperTest extends TestCase {
     Artist user = new Artist(FAKE_USER_ID);
     user.setName(FAKE_NAME);
     user.setLink(FAKE_LINK);
+    List<String> genres = new ArrayList<>();
+    genres.add(FAKE_GENRES1);
+    genres.add(FAKE_GENRES2);
+    user.setGenres(genres);
     Cover cover = new Cover();
     cover.setSmall(FAKE_AVATAR_SMALL);
     cover.setBig(FAKE_AVATAR_BIG);

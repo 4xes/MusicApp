@@ -22,13 +22,20 @@ import rx.Observable;
   private static final long EXPIRATION_TIME = 4 * 60 * 10 * 1000;
   private static final String ARTISTS_NAME = "artists.realm";
   private static final String EXPIRED_KEY = "artist_expired";
+  private String name;
 
   @Inject public ArtistRealmCache(Context context) {
     initConfig(context);
   }
 
+  public ArtistRealmCache(Context context, String name) {
+    initConfig(context);
+    this.name = name;
+  }
+
   public void initConfig(Context context) {
-    RealmConfiguration config = new RealmConfiguration.Builder(context).name(ARTISTS_NAME)
+    RealmConfiguration config =
+        new RealmConfiguration.Builder(context).name(name != null ? name : ARTISTS_NAME)
         .deleteRealmIfMigrationNeeded()
         .build();
     Realm.setDefaultConfiguration(config);
