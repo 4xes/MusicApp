@@ -45,6 +45,7 @@ public class UserDataRepositoryTest extends ApplicationTestCase {
 
   @Test public void testGetArtistHappyCase() {
     Artist userEntity = new Artist(FAKE_ARTIST_ID);
+    given(mockRealmCache.isCashed(FAKE_ARTIST_ID)).willReturn(true);
     given(mockRealmCache.getArtist(FAKE_ARTIST_ID)).willReturn(Observable.just(userEntity));
     userDataRepository.artist(FAKE_ARTIST_ID);
 
