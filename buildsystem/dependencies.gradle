@@ -14,7 +14,7 @@ ext {
   //Libraries
   supportAndroid = '23.3.0'
   daggerVersion = '2.0.2'
-
+  finestwebview = '1.2.5'
   javaxInjectVersion = '1'
   butterKnifeVersion = '7.0.1'
   glideVersion = '3.7.0'
@@ -26,6 +26,7 @@ ext {
   realm = '0.88.3'
   androidAnnotationsVersion = '21.0.3'
 
+
   //Testing
   robolectricVersion = '3.1-SNAPSHOT'
   jUnitVersion = '4.12'
@@ -34,7 +35,7 @@ ext {
   dexmakerVersion = '1.0'
   espressoVersion = '2.0'
   testingSupportLibVersion = '0.1'
-  finestwebview = '1.2.5'
+  powermock = '1.6.4'
 
   //Logs
   timber = '4.1.2'
@@ -58,23 +59,23 @@ ext {
   ]
 
   presentationTestDependencies = [
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-      dexmaker:           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
-      dexmakerMockito:    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
-      espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-      testingSupportLib:  "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+      mockito          :            "org.mockito:mockito-core:${mockitoVersion}",
+      dexmaker         :           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+      dexmakerMockito  :    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+      espresso         :           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+      testingSupportLib: "com.android.support.test:testing-support-lib:${testingSupportLibVersion}"
   ]
 
   domainDependencies = [
-      daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-      javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+      daggerCompiler :     "com.google.dagger:dagger-compiler:${daggerVersion}",
+      javaxInject    :        "javax.inject:javax.inject:${javaxInjectVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
+      rxJava         : "io.reactivex:rxjava:${rxJavaVersion}"
   ]
 
   domainTestDependencies = [
-      junit:              "junit:junit:${jUnitVersion}",
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+      junit  :              "junit:junit:${jUnitVersion}",
+      mockito: "org.mockito:mockito-core:${mockitoVersion}"
   ]
 
   dataDependencies = [
@@ -87,16 +88,20 @@ ext {
       rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
       androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}"
+
   ]
 
   dataTestDependencies = [
-      junit:              "junit:junit:${jUnitVersion}",
-      assertj:            "org.assertj:assertj-core:${assertJVersion}",
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-      robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+      junit          :              "junit:junit:${jUnitVersion}",
+      assertj        :            "org.assertj:assertj-core:${assertJVersion}",
+      mockito        :            "org.mockito:mockito-core:${mockitoVersion}",
+      robolectric    :        "org.robolectric:robolectric:${robolectricVersion}",
+      powermockJunit : "org.powermock:powermock-module-junit4:${powermock}",
+      powermockRule  : "org.powermock:powermock-module-junit4-rule:${powermock}",
+      powermock      : "org.powermock:powermock-api-mockito:${powermock}",
+      powermockStream: "org.powermock:powermock-classloading-xstream:${powermock}"
   ]
 
-  developmentDependencies = [
-      leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+  developmentDependencies = [leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
   ]
 }
