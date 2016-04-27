@@ -14,6 +14,8 @@ App's screens.
 
 <img src="/art/screen2.png?raw=true" width=360 height=640 alt="Screen detail 2">
 
-Bonus open link in finest web view.
+Bonus: Open link in finest web view.
 
 <img src="/art/screen3.png?raw=true" width=360 height=640 alt="Screen browser link">
+
+[Square's codestyle](https://github.com/square/java-code-styles)
