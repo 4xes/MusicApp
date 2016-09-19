@@ -6,13 +6,13 @@ allprojects {
 
 ext {
   //Android
-  androidBuildToolsVersion = "23.0.2"
+  androidBuildToolsVersion = "24.0.2"
   androidMinSdkVersion = 15
-  androidTargetSdkVersion = 23
-  androidCompileSdkVersion = 23
+  androidTargetSdkVersion = 24
+  androidCompileSdkVersion = 24
 
   //Libraries
-  supportAndroid = '23.3.0'
+  supportAndroid = '24.2.1'
   daggerVersion = '2.0.2'
   finestwebview = '1.2.5'
   javaxInjectVersion = '1'
@@ -24,7 +24,6 @@ ext {
   gsonVersion = '2.3'
   retrofitVersion = '2.0.2'
   realm = '0.88.3'
-  androidAnnotationsVersion = '21.0.3'
 
 
   //Testing
@@ -80,14 +79,14 @@ ext {
 
   dataDependencies = [
       daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-      dagger:             "com.google.dagger:dagger:${daggerVersion}",
-      realm:              "io.realm:realm-android:${realm}",
-      retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-      retrofitGson:       "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-      rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
-      rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
-      javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}"
+      dagger            :             "com.google.dagger:dagger:${daggerVersion}",
+      realm             :              "io.realm:realm-android:${realm}",
+      retrofit          :           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+      retrofitGson      :       "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+      rxJava            :             "io.reactivex:rxjava:${rxJavaVersion}",
+      rxAndroid         :          "io.reactivex:rxandroid:${rxAndroidVersion}",
+      javaxAnnotation   :    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+      androidAnnotations: "com.android.support:support-annotations:${supportAndroid}"
 
   ]
 
